@@ -1,0 +1,12 @@
+main: Entry.Entry
+name: EconomyPlugin
+version: 1.0
+author: Vincent Costa
+description: This plugin features plots, factions, markets, cryptocurrency
+commands:
+    bomb:
+        description: Creates a giant explosion
+        usage: /bomb
+    f:
+        description: Faction commands
+        usage: /f
