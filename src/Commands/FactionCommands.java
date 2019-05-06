@@ -10,6 +10,8 @@ import ServerData.LocationInfo;
 import ServerData.init;
 import com.mongodb.client.FindIterable;
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.inc;
+import java.util.UUID;
 import org.bson.Document;
 import org.bukkit.ChatColor;
 import org.bukkit.Chunk;
@@ -17,6 +19,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Score;
 
 /**
  *
@@ -70,11 +74,30 @@ public class FactionCommands implements CommandExecutor {
                 return false;
             }
             
+            UUID uuid = player.getUniqueId();
+        
+            Document playerDoc = init.dbStore.users.find(eq("uuid", uuid.toString())).first();
+            
+            if(Float.parseFloat(playerDoc.get("money").toString()) < 500) {
+                player.sendMessage(ChatColor.RED + "You dont have enough money to buy this chunk");
+                return false;
+            }
+
+            init.dbStore.users.updateOne(playerDoc, inc("money", -500.0));
+
+            Objective objective = player.getScoreboard().getObjective("balance");
+
+            Score score = objective.getScore(ChatColor.GREEN + "$");
+
+            int money = score.getScore() - 500;
+            score.setScore(money);
+            
             Document newProperty = new Document("chunk", parsedValue).append("faction", faction);
             
             init.dbStore.properties.insertOne(newProperty);
             
-            player.sendMessage(ChatColor.GREEN + "You have claimed chunk " + parsedValue);
+            player.sendMessage(ChatColor.GREEN + "You have claimed chunk " + parsedValue + " for $500");
+            
             return true;
     }
     

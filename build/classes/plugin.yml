@@ -10,3 +10,10 @@ commands:
     f:
         description: Faction commands
         usage: /f
+    sell:
+        description: Faction commands
+        usage: /f
+    add:
+        description: Faction commands
+        usage: /f
+        

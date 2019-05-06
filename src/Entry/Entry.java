@@ -1,6 +1,8 @@
 package Entry;
 
+import Commands.AdminCommands;
 import Commands.FactionCommands;
+import Commands.ShopCommands;
 import Commands.SpecialCommands;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -29,5 +31,7 @@ public class Entry extends JavaPlugin {
     public void registerCommands() {
         this.getCommand("bomb").setExecutor(new SpecialCommands());
         this.getCommand("f").setExecutor(new FactionCommands());
+        this.getCommand("sell").setExecutor(new ShopCommands());
+        this.getCommand("add").setExecutor(new AdminCommands());
     }
 }

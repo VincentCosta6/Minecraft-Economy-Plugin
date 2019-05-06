@@ -54,7 +54,7 @@ public class PlayerServerEvents implements Listener {
         
         Objective balance = board.registerNewObjective("balance", "dummy");
         balance.setDisplaySlot(DisplaySlot.SIDEBAR);
-        balance.setDisplayName("Stats: "); 
+        balance.setDisplayName(""); 
         
         Score score = balance.getScore(ChatColor.GREEN + "$");
         

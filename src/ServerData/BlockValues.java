@@ -9,9 +9,9 @@ import org.bukkit.block.Block;
 
 public class BlockValues {
 	
-	protected HashMap<String, Float> blocks;
+	public static HashMap<String, Float> blocks;
 	
-	Scanner scan;
+	public static Scanner scan;
 	
 	public BlockValues(String path) throws FileNotFoundException {
 		blocks = new HashMap<String, Float>();
@@ -34,10 +34,10 @@ public class BlockValues {
 	}
 	
 	public String extractKeyFromBlock(Block block) {
-		return block.getBlockData().getAsString().substring(10); // Remove minecraft: from the block data string
+            return block.getBlockData().getAsString().substring(10); // Remove minecraft: from the block data string
 	}
 	
 	public HashMap<String, Float> getHashMap() {
-		return this.blocks;
+            return this.blocks;
 	}
 }

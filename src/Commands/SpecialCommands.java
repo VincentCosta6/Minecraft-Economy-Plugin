@@ -18,6 +18,8 @@ public class SpecialCommands implements CommandExecutor {
             Player player = (Player) sender;
             Location loc = player.getLocation();
             
+            if(!player.isOp()) return false;
+                
             World world = Bukkit.getWorlds().get(0);
             
             int radius = Integer.parseInt(args[0]);

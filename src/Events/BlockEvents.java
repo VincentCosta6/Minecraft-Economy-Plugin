@@ -35,7 +35,7 @@ public class BlockEvents implements Listener {
             return;
         }
         
-        giveMoneyForMining(event);
+        //giveMoneyForMining(event);
     }
     
     boolean checkUserCanMine(Player p, Block b) {
