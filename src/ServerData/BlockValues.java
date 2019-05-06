@@ -10,13 +10,14 @@ import org.bukkit.block.Block;
 public class BlockValues {
 	
 	public static HashMap<String, Float> blocks;
+        public static HashMap<String, Boolean> blacklistedInteractions;
 	
 	public static Scanner scan;
 	
-	public BlockValues(String path) throws FileNotFoundException {
-		blocks = new HashMap<String, Float>();
+	public BlockValues(String blockValues, String blackListedBlocks) throws FileNotFoundException {
+		blocks = new HashMap();
 		
-		scan = new Scanner(new File(path));
+		scan = new Scanner(new File(blockValues));
 		String line;
 		
 		while(scan.hasNextLine()) {
@@ -30,7 +31,24 @@ public class BlockValues {
 		}
 
 		Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "[Economy Plugin] Loaded block values");
+                
+                /////////////////////////////////////////////////////////////////////////////////////////////////////
+                
+                blacklistedInteractions = new HashMap();
 		
+                scan = new Scanner(new File(blackListedBlocks));
+                
+                while(scan.hasNextLine()) {
+                    line = scan.nextLine();
+                    
+                    String[] split = line.split(";");
+                    
+                    if(split.length != 2) System.exit(1);
+                    
+                    blacklistedInteractions.put(split[0], true);
+                }
+                
+                Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "[Economy Plugin] Loaded blacklisted interactions");
 	}
 	
 	public String extractKeyFromBlock(Block block) {

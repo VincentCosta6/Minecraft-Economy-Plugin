@@ -7,6 +7,7 @@ import Commands.SpecialCommands;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import Events.*;
+import ServerData.DatabaseStore;
 
 public class Entry extends JavaPlugin {
 	@Override
@@ -19,13 +20,14 @@ public class Entry extends JavaPlugin {
    
     @Override
     public void onDisable() {
-       
+       DatabaseStore.disconnect();
     }
     
     public void registerEvents() {
     	getServer().getPluginManager().registerEvents(new BlockEvents(), this);
         getServer().getPluginManager().registerEvents(new PlayerServerEvents(), this);
         getServer().getPluginManager().registerEvents(new PlayerMovementEvents(), this);
+        getServer().getPluginManager().registerEvents(new PlayerInteractionEvents(), this);
     }
     
     public void registerCommands() {

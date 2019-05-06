@@ -13,19 +13,31 @@ import org.bukkit.ChatColor;
 
 public class DatabaseStore {
     
+    static MongoClient mongoClient;
+    
     public MongoCollection<Document> users, factions, properties;
 	
     public DatabaseStore() throws UnknownHostException {
-        MongoClient mongoClient = MongoClients.create();
+        mongoClient = MongoClients.create();
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "[Economy Plugin] Connected to Mongo");
         
         MongoDatabase database = mongoClient.getDatabase("minecraft");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "[Economy Plugin] Loaded mongo minecraft database");
         
         users = database.getCollection("users");
-        factions = database.getCollection("factions");
-        properties = database.getCollection("properties");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "[Economy Plugin] Loaded user colection");
         
-        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "[Economy Plugin] Loaded user database");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "[Economy Plugin] Loaded faction database");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "[Economy Plugin] Loaded property database");
+        factions = database.getCollection("factions");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "[Economy Plugin] Loaded faction colection");
+        
+        properties = database.getCollection("properties");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "[Economy Plugin] Loaded property colection");
+        
+        
+        
+    }
+    
+    public static void disconnect() {
+        mongoClient.close();
     }
 }

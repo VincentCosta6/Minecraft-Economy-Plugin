@@ -11,7 +11,7 @@ public class init {
 	public static void Init() {
 		try 
 		{
-                    blockValues = new BlockValues("./plugins/Economy/block-values.txt");
+                    blockValues = new BlockValues("./plugins/Economy/block-values.txt", "./plugins/Economy/blacklist-values.txt");
                     dbStore = new DatabaseStore();
 		} 
 		catch (FileNotFoundException e) 
