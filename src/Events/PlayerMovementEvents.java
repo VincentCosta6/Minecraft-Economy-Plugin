@@ -43,16 +43,24 @@ public class PlayerMovementEvents implements Listener {
             
             Document property = init.dbStore.properties.find(eq("chunk", parsedValue)).first();
             
-            if(property == null) {
-                // If claim is set to auto claim the land
-            }
+            String oldName = hashedInfo.factionName;
             
             String print = property == null ? "none" : property.get("faction").toString();
             
-            if(!print.contentEquals(hashedInfo.factionName)) {
+            if(!print.contentEquals(oldName)) {
                 hashedInfo.factionName = print;
                 
-                TitleAPI.sendTitle(event.getPlayer(), 5, 20, 20, ChatColor.GOLD + print);
+                String message;
+            
+                if(property == null) {
+                    // If claim is set to auto claim the land
+                    message = "Now leaving " + oldName;
+                }
+                else {
+                    message = print;
+                }
+                
+                TitleAPI.sendTitle(event.getPlayer(), 5, 20, 20, ChatColor.GOLD + message);
             }
             
             hashedInfo.chunk = locChunk;

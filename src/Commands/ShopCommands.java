@@ -58,9 +58,16 @@ public class ShopCommands implements CommandExecutor {
             
             player.getInventory().getItemInMainHand().setType(Material.AIR);
             
-            player.sendMessage("You sold " + ChatColor.YELLOW + blockID.toLowerCase() + " for " + ChatColor.GREEN + "$" + value);
+            player.sendMessage("You sold " + ChatColor.YELLOW + stack.getAmount() + " " + blockID.toLowerCase() + " for " + ChatColor.GREEN + "$" + value);
             
             return true;
+        }
+        else if(args[0].contentEquals("info")) {
+            ItemStack stack = player.getInventory().getItemInMainHand();
+            
+            String blockID = stack.getType().name();
+            
+            player.sendMessage(blockID);
         }
         
         return false;

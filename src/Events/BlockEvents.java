@@ -30,6 +30,8 @@ public class BlockEvents implements Listener {
     @EventHandler
     public void onBlockbreak(BlockBreakEvent event) {
         
+        if(event.getPlayer().isOp()) return;
+        
         if(!checkUserCanMine(event.getPlayer(), event.getBlock())) {
             event.setCancelled(true);
             return;
