@@ -22,3 +22,5 @@ This plugin is also dependant on a couple of external jar files that you will ne
 4) [TitleAPI-1.7.7](https://www.spigotmc.org/resources/api-titleapi-1-7-1-8-1-9.1047/)
 
 The external jars can also be found in this [folder](https://github.com/VincentCosta6/Minecraft-Economy-Plugin/tree/master/dist/lib) in case one of the links goes down or you want to verify the hashes of the local jars with the external links
+
+I will be updating this README with intructions for each command this plugin provides and a setup tutorial for Mongo, and discuss other plugins that are being used but only through the Minecraft server terminal
