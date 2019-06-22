@@ -5,7 +5,7 @@ This plugin comes with a secret "Winter is coming" mode that is a work in progre
 
 If you want to run this plugin on your server you will need to 
 1) Set up a MongoDB server
-2) Create a MongoDB database and call it minecraft
+2) Create a MongoDB database and call it "minecraft"
 3) Create 3 collections called: "factions", "properties", and "users" in the "minecraft" database
 
 (Optional: for larger servers) To make the database become more performant we need to create indexes on some of the keys. All of which are of type String. I recommend ticking "Build index in the background" and "Create unique index" 
@@ -21,4 +21,4 @@ This plugin is also dependant on a couple of external jar files that you will ne
 3) [spigot-1.13.2](https://cdn.getbukkit.org/spigot/spigot-1.13.2.jar)
 4) [TitleAPI-1.7.7](https://www.spigotmc.org/resources/api-titleapi-1-7-1-8-1-9.1047/)
 
-The external jars can also be found in this [folder](https://github.com/VincentCosta6/Minecraft-Economy-Plugin/tree/master/dist/lib) in case one of the links goes down or you want to verify the hashes of my local jars with the external links
+The external jars can also be found in this [folder](https://github.com/VincentCosta6/Minecraft-Economy-Plugin/tree/master/dist/lib) in case one of the links goes down or you want to verify the hashes of the local jars with the external links
