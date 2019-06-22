@@ -20,3 +20,5 @@ This plugin is also dependant on a couple of external jar files that you will ne
 3) [mongo-java-driver-3.8.1](https://repo1.maven.org/maven2/org/mongodb/mongo-java-driver/3.8.1/mongo-java-driver-3.8.1.jar)
 3) [spigot-1.13.2](https://cdn.getbukkit.org/spigot/spigot-1.13.2.jar)
 4) [TitleAPI-1.7.7](https://www.spigotmc.org/resources/api-titleapi-1-7-1-8-1-9.1047/)
+
+The external jars can also be found in this [folder](https://github.com/VincentCosta6/Minecraft-Economy-Plugin/tree/master/dist/lib) in case one of the links goes down or you want to verify the hashes of my local jars with the external links
